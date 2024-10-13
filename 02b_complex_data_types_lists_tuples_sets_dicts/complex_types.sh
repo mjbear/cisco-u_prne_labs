@@ -8,3 +8,7 @@
 
 /usr/bin/env python -c "print('=' * 80)"
 
+/usr/bin/env python sets.py
+
+/usr/bin/env python -c "print('=' * 80)"
+
