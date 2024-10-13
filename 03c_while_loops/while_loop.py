@@ -5,7 +5,9 @@ last_octet = 1
 while last_octet <= 3:
     if last_octet == 1:
         last_octet += 1
-        continue
+        # continue
+        print('While loop exited with break statement')
+        break
     ip_address = '10.254.0.' + str(last_octet)
     # print(ip_address)
     net_connect = netmiko.ConnectHandler(
