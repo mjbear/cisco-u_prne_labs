@@ -1,9 +1,9 @@
 import netmiko
 
 ip_list = [
-    '10.254.0.1',
+    # '10.254.0.1',
     '10.254.0.2',
-    '10.254.0.3',
+    # '10.254.0.3',
 ]
 
 username = 'cisco'
@@ -22,7 +22,10 @@ ip_last_octet = 1
 while ip_last_octet <= 3:
     ip = ip_3_octets + str(ip_last_octet)
     ip_int_br = get_ip_int_br(ip)
-    print('IP interface from ' + ip)
-    print(ip_int_br)
-    print('-' * 80)
+    if len(ip_int_br) > 0:
+        contains_text = True
+    if ip in ip_list and contains_text:
+        print('IP interface from ' + ip)
+        print(ip_int_br)
+        print('-' * 80)
     ip_last_octet += 1
