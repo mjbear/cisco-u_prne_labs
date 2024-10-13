@@ -1,6 +1,7 @@
 import netmiko
 
-# Replace this comment
+ip_3_octets = '10.254.0'
+ip_last_octet = 1
 
 username = 'cisco'
 password = 'cisco'
@@ -12,4 +13,9 @@ def get_ip_int_br(ip):
         username=username, password=password, port=port)
     return net_connect.send_command('show ip interface brief')
 
-# Replace this comment
+while ip_last_octet <= 3:
+    ip = ip_3_octets + str(ip_last_octet)
+    ip_int_br = get_ip_int_br(ip)
+    print(ip_int_br)
+    print('_' * 80)
+    ip_last_octet += 1
