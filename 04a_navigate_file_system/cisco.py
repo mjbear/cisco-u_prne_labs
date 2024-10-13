@@ -1,4 +1,5 @@
 import netmiko
+import os
 
 
 class CiscoIOS():
@@ -43,3 +44,38 @@ class CiscoIOS():
         """
         log = self.conn.send_command('sh log')
         return log
+
+def main():
+    # print(os.getcwd())
+    ip_list = [
+        '10.254.0.1',
+        '10.254.0.2',
+        '10.254.0.3',
+    ]
+    # trailing commas are a best practice for multiline tuple, set, list,
+    # or dictionary since
+    # 1. git diff will show changes on that line
+    # 2. trailing comma avoids the syntax error of a forgotten comma
+    
+    router_list = []
+    for ip in ip_list:
+        conn = CiscoIOS(ip, username='cisco', password='cisco')
+        router_list.append(conn)
+    for router in router_list:
+        base_dir = os.getcwd() + '/routers/'
+        router_dir = base_dir + router.hostname + '/'
+        os.mkdir(router_dir)
+        data_dict = {
+            'running-config': router.get_run_cfg(),
+            'ip-interface': router.get_ip_int(),
+            'log': router.get_log(),
+        }
+    for output in data_dict:
+        filename = router_dir + output + '.txt'
+    with open(filename, 'w') as f:
+        print(data_dict[output], file=f)
+
+if __name__ == '__main__':
+    main()
+    for _ in os.walk('routers'):
+        print(_)
