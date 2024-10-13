@@ -7,6 +7,7 @@ Cisco University - [Programming for Network Engineers | PRNE](https://u.cisco.co
 > The `initial` branch has the unmodified files as a starting point for each lab exercise.
 >
 > The `completed` branch (also the default) has the modified files as the end goal of the exercise.
+> 
 > (In some cases, I chose to comment rather than delete certain lines which the exercises say to replace.)
 
 ## OVERVIEW
