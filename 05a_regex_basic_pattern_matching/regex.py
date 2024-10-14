@@ -14,14 +14,14 @@ csr1kv1_ip_int_br = net_connect.send_command('sh ip int br')
 # print(type(csr1kv1_ip_int_br))
 
 sh_ip_int_split = re.split(r'\n', csr1kv1_ip_int_br)
-print(sh_ip_int_split)
+# print(sh_ip_int_split)
 
-# regex_pattern = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
-# ip_string = str()
+regex_pattern = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
+ip_string = str()
 
-# for value in sh_ip_int_split:
-#     ip = re.search(regex_pattern, value)
-#     if ip:
-#         ip_string += ip.group(0) + ','
+for value in sh_ip_int_split:
+    ip = re.search(regex_pattern, value)
+    if ip:
+        ip_string += ip.group(0) + ','
 
-# print(ip_string)
+print(ip_string)
