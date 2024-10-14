@@ -18,5 +18,9 @@ csr1kv1_ip_int_br = net_connect.send_command('show ip interface brief')
 
 # re.findall finds all matches
 ##
-ip_addr = re.findall(r'\w+\s+([\d\.]+)', csr1kv1_ip_int_br)
-print(ip_addr)
+# ip_addr = re.findall(r'\w+\s+([\d\.]+)', csr1kv1_ip_int_br)
+# print(ip_addr)
+
+re_pattern = r'(GigabitEthernet1.*)'
+gigabit_ethernet_1 = re.search(re_pattern, csr1kv1_ip_int_br)
+print(gigabit_ethernet_1.group(1))
