@@ -4,6 +4,9 @@ This module is designed to interact with Cisco appliances
 """
 import netmiko
 import pandas as pd
+import requests
+import pprint
+import json
 
 class CiscoIOS():
     """
@@ -48,12 +51,34 @@ class CiscoRestconf():
         """
         Returns dictionary containing JSON interface information
         """
-        url_base = ''
+        url_base = 'https://' + self.ip + ':' + self.port
         dn = '/restconf/data/Cisco-IOS-XE-native:native/interface/'
-        pass
+        uri = url_base + dn
+        headers = {'Accept': 'application/yang-data+' + data_type}
+        request_response = requests.get(uri,
+            headers=headers,
+            auth=(self.username, self.password),
+            verify=False)
+        return request_response.json()
 
     def get_interface_ips(self, interface_info, data_type='json'):
         """
         Returns list of interfaces that have a primary IP address
         """
-        pass
+        interface_dict = interface_info['Cisco-IOS-XE-native:interface']
+        interface_list = interface_dict['GigabitEthernet']
+        for intf in interface_list:
+            if 'ip' not in intf:
+                interface_list.remove(intf)
+        return json.dumps(interface_info, indent=4)
+
+def main():
+    csr = CiscoRestconf('10.254.0.1', username='cisco', password='cisco')
+    # pprint.pprint(csr.get_interface_info())
+    # print(csr.get_interface_ips(csr.get_interface_info()))
+
+    with open('csr_interface_IPs.json', 'w') as json_file:
+        print(csr.get_interface_ips(csr.get_interface_info()), file=json_file)
+
+if __name__ == '__main__':
+    main()
