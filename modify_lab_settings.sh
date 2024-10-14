@@ -6,15 +6,19 @@ name=$(gsettings get "$profiles_path/:$prof/" visible-name)
 
 font="'Monospace 20'"
 
-echo -e "Setting the font for terminal profile $name to $font\n"
+# echo -e "$profiles_path/:$prof/"
 
 # gnome-terminal font size
-echo -e "$profiles_path/:$prof/"
+echo -e "Setting the font for terminal profile $name to $font\n"
 gsettings set "$profiles_path/:$prof/" use-system-font false
 gsettings set "$profiles_path/:$prof/" font "$font"
 
-echo -e "Setting the gedit font to $font\n"
 
 # gedit editor font size
+echo -e "Setting the gedit font to $font\n"
 gsettings set org.gnome.gedit.preferences.editor use-default-font false
 gsettings set org.gnome.gedit.preferences.editor editor-font "$font"
+
+
+# set git editor
+git config --global core.editor vim
