@@ -1,0 +1,71 @@
+{
+  "Cisco-IOS-XE-native:interface": {
+    "GigabitEthernet": [
+      {
+        "name": "1",
+        "mop": {
+          "enabled": false,
+          "sysid": false
+        },
+        "Cisco-IOS-XE-ethernet:negotiation": {
+          "auto": true
+        }
+      },
+      {
+        "name": "2",
+        "ip": {
+          "address": {
+            "primary": {
+              "address": "10.12.0.1",
+              "mask": "255.255.255.0"
+            }
+          }
+        },
+        "mop": {
+          "enabled": false,
+          "sysid": false
+        },
+        "Cisco-IOS-XE-ethernet:negotiation": {
+          "auto": true
+        }
+      },
+      {
+        "name": "3",
+        "ip": {
+          "address": {
+            "primary": {
+              "address": "10.13.0.1",
+              "mask": "255.255.255.0"
+            }
+          }
+        },
+        "mop": {
+          "enabled": false,
+          "sysid": false
+        },
+        "Cisco-IOS-XE-ethernet:negotiation": {
+          "auto": true
+        }
+      },
+      {
+        "name": "4",
+        "description": "MANAGEMENT_NETWORK : DO_NOT_CHANGE",
+        "ip": {
+          "address": {
+            "primary": {
+              "address": "10.254.0.1",
+              "mask": "255.255.255.0"
+            }
+          }
+        },
+        "mop": {
+          "enabled": false,
+          "sysid": false
+        },
+        "Cisco-IOS-XE-ethernet:negotiation": {
+          "auto": true
+        }
+      }
+    ]
+  }
+}
