@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 
 
 def get_interface_info(to_terminal=False):
@@ -18,4 +19,18 @@ def get_interface_info(to_terminal=False):
     else:
         return response.content
 
-get_interface_info(to_terminal=True)
+# get_interface_info(to_terminal=True)
+xml_data = get_interface_info()
+soup = BeautifulSoup(xml_data, 'lxml')
+# print(soup.prettify())
+# print(soup.gigabitethernet)
+for intf in soup.find_all('gigabitethernet'):
+    # print(intf)
+    # print(intf.name + intf.find('name').string)
+    # print('-' * 50)
+
+    print('-' * 25)
+    ip = intf.find('ip')
+    if ip:
+        print('GigabitEthernet', intf.find('name').string)
+        print(intf.ip.primary.address)
