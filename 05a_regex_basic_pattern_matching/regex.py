@@ -9,6 +9,9 @@ port = '22'
 
 net_connect = netmiko.ConnectHandler(ip=ip, device_type=device_type,
     username=username, password=password, port=port)
+csr1kv1_ip_int_br = net_connect.send_command('sh ip int br')
+print(csr1kv1_ip_int_br)
+print(type(csr1kv1_ip_int_br))
 
 # regex_pattern = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
 # ip_string = str()
