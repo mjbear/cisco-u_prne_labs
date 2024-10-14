@@ -41,7 +41,14 @@ class ciscoIOS(cisco):
         for interface in ip_int_br:
             self.interface_list.append(interface['intf'])
 
+def main():
+    """
+    Put these three lines in a main func so it doesn't automatically
+    run during import
+    """
+    csr1vk1 = ciscoIOS('10.254.0.1', username='cisco', password='cisco')
+    csr1vk1.populate_interface_list()
+    print(csr1vk1.interface_list)
 
-csr1vk1 = ciscoIOS('10.254.0.1', username='cisco', password='cisco')
-csr1vk1.populate_interface_list()
-print(csr1vk1.interface_list)
+if __name__ == '__main__':
+    main()
