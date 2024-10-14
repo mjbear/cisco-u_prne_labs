@@ -1,0 +1,21 @@
+import netmiko
+import re
+
+ip = '10.254.0.1'
+username = 'cisco'
+password = 'cisco'
+device_type = 'cisco_ios'
+port = '22'
+
+net_connect = netmiko.ConnectHandler(ip=ip, device_type=device_type,
+    username=username, password=password, port=port)
+
+# regex_pattern = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
+# ip_string = str()
+
+# for value in sh_ip_int_split:
+#     ip = re.search(regex_pattern, value)
+#     if ip:
+#         ip_string += ip.group(0) + ','
+
+# print(ip_string)
