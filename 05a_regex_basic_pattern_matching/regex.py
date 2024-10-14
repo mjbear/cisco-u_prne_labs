@@ -16,7 +16,11 @@ csr1kv1_ip_int_br = net_connect.send_command('sh ip int br')
 sh_ip_int_split = re.split(r'\n', csr1kv1_ip_int_br)
 # print(sh_ip_int_split)
 
-regex_pattern = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
+# regex_pattern = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'
+regex_pattern = (
+    r'(?:(?:25[0-5]|2[0-4][0-9]|1?[0-9]?[0-9])\.){3}'
+    r'(?:25[0-5]|2[0-4][0-9]|1?[0-9]?[0-9])'
+)
 ip_string = str()
 
 for value in sh_ip_int_split:
