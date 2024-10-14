@@ -27,4 +27,10 @@ for index, row in df.iterrows():
     router_list.append(hostname)
     version_list.append(version)
 
-print(router_list, version_list, sep='\n')
+# print(router_list, version_list, sep='\n')
+router_data = pandas.DataFrame()
+router_data['hostname'] = router_list
+router_data['version'] = version_list
+
+# print(router_data)
+router_data.to_csv('hostname_version.csv', index=False)
