@@ -1,6 +1,7 @@
 import re
 import netmiko
 import change_mac_notation
+import eui48to64
 
 ip = '10.254.0.1'
 username = 'cisco'
@@ -17,4 +18,5 @@ mac_list = re.findall(r'((?:[0-9a-f]{4}\.){2}[0-9a-f]{4})', show_arp)
 # print(mac_list)
 
 # print(change_mac_notation.change_notation(mac_list[0], '-'))
-print(change_mac_notation.change_notation(mac_list[0], ':'))
+# print(change_mac_notation.change_notation(mac_list[0], ':'))
+print(eui48to64.convert(mac_list))
