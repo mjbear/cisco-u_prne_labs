@@ -9,10 +9,12 @@ font="'Monospace 20'"
 echo -e "Setting the font for terminal profile $name to $font\n"
 
 # gnome-terminal font size
-gsettings set $profile_path/:$prof/ use-system-font false
-gsettings set $profile_path/:$prof/ font "$font"
+echo -e "$profiles_path/:$prof/"
+gsettings set "$profiles_path/:$prof/" use-system-font false
+gsettings set "$profiles_path/:$prof/" font "$font"
 
 echo -e "Setting the gedit font to $font\n"
 
 # gedit editor font size
+gsettings set org.gnome.gedit.preferences.editor use-default-font false
 gsettings set org.gnome.gedit.preferences.editor editor-font "$font"
