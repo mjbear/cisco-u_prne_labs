@@ -1,4 +1,5 @@
 from netmiko import ConnectHandler
+import pandas as pd
 
 
 def get_router_output(ip, username=None, password=None, port=22,
@@ -21,4 +22,12 @@ sh_ip_arp = get_router_output(
     command='show ip arp'
 )
 
-print(sh_ip_arp)
+# print(sh_ip_arp)
+df = pd.DataFrame(sh_ip_arp)
+interface_names = df['interface'].unique()
+# print(interface_names)
+
+for interface in interface_names:
+    print(interface)
+    print(df['address'].loc[df['interface'] == interface].values)
+    print('_' * 80)
