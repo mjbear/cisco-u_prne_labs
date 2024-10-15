@@ -23,4 +23,4 @@ EOF
 )
 
 python -c "$privy_cmd"
-
+# could also just pipe here doc direct to python binary
