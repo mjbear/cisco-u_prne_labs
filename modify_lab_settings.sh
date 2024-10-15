@@ -4,7 +4,8 @@ profiles_path='org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/prof
 prof=$(gsettings get org.gnome.Terminal.ProfilesList default | awk -F\' '{print $2}')
 name=$(gsettings get "$profiles_path/:$prof/" visible-name)
 
-font="'Monospace 20'"
+size=20
+font="'Monospace $size'"
 
 # echo -e "$profiles_path/:$prof/"
 
@@ -18,6 +19,25 @@ gsettings set "$profiles_path/:$prof/" font "$font"
 echo -e "Setting the gedit font to $font\n"
 gsettings set org.gnome.gedit.preferences.editor use-default-font false
 gsettings set org.gnome.gedit.preferences.editor editor-font "$font"
+
+
+# vscode editor and terminal font size
+echo -e "Setting VS Code editor and terminal font size\n"
+# code_font=$(cat <<EOF
+#     "editor.fontSize": $size,
+#     "terminal.integrated.fontSize": $size,
+# }
+# EOF
+# )
+# sed -i.dist -e "s/^}/$code_font/" ~/.config/Code/User/settings.json
+
+# stop gap
+sed -i.dist -e '/^}/d' ~/.config/Code/User/settings.json
+cat >> ~/.config/Code/User/settings.json <<EOF
+    "editor.fontSize": $size,
+    "terminal.integrated.fontSize": $size,
+}
+EOF
 
 
 # set git editor
