@@ -37,9 +37,25 @@ class ciscoIOS():
         interface_names = df['intf'].to_list()
         return interface_names
 
+    def get_run_int(self):
+        """
+        Returns output from sh run interface [interface-name]
+        User should type case-sensitive interface name when prompted
+        """
+        interface_name = input('Interface name:')
+        if interface_name in self.get_interface_list():
+            return self.conn.send_command('sh run interface ' + interface_name)
+        else:
+            output = self.conn.send_command('sh run interface ' + interface_name)
+            if 'Invalid input' not in output:
+                return output
+            else:
+                print('Error - Invalid interface name')
+
 def main():
     csr = ciscoIOS('10.254.0.1', prompt=True)
-    print(csr.get_interface_list())
+    # print(csr.get_interface_list())
+    print(csr.get_run_int())
 
 if __name__ == '__main__':
     main()
