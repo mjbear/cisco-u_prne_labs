@@ -1,5 +1,6 @@
 import netmiko
 import pandas as pd
+from getpass import getpass
 
 
 class ciscoIOS():
@@ -8,7 +9,7 @@ class ciscoIOS():
     issue configuration commands
     """
 
-    def __init__(self, ip, username=None, password=None, 
+    def __init__(self, ip, prompt=False, username=None, password=None, 
                 port=22, device_type='cisco_ios'):
         """
         Establishes connection to target device.
@@ -19,6 +20,9 @@ class ciscoIOS():
         :param str password:        password for authentication
         :param str device_type:     should not change, class is designed for Cisco IOS
         """
+        if prompt:
+            username = input('Enter Username:')
+        password = getpass('Enter Password:')
         self.conn = netmiko.ConnectHandler(ip=ip, port=port, username=username,
                     password=password, device_type=device_type)
         _ = self.conn.send_command('sh run | include hostname')
@@ -32,3 +36,10 @@ class ciscoIOS():
         df = pd.DataFrame(ip_int_br)
         interface_names = df['intf'].to_list()
         return interface_names
+
+def main():
+    csr = ciscoIOS('10.254.0.1', prompt=True)
+    print(csr.get_interface_list())
+
+if __name__ == '__main__':
+    main()
