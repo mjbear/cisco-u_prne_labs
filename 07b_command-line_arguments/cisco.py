@@ -1,6 +1,7 @@
 import netmiko
 import pandas as pd
 from getpass import getpass
+import sys
 
 
 class CiscoIOS():
@@ -47,3 +48,10 @@ class CiscoIOS():
             return self.conn.send_command('sh run | section ' + section)
         else:
             return 'Error - Invalid interface name.'
+
+def main():
+    csr = CiscoIOS(sys.argv[1], username='cisco', password='cisco')
+    print(csr.get_interface_list())
+
+if __name__ == '__main__':
+    main()
