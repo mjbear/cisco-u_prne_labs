@@ -20,18 +20,28 @@ class CiscoRestconf():
     def get_request(self, headers, dn):
         url_base = f'https://{self.ip}:{self.port}/restconf'
         uri = url_base + dn
-        response = requests.get(uri, 
-            headers=headers,
-            auth=self.auth,
-            verify=False
-        )
-        return response
+        try:
+            response = requests.get(uri, 
+                headers=headers,
+                auth=self.auth,
+                verify=False
+            )
+            response.raise_for_status()
+        except requests.ConnectionError as error:
+            output = 'Failed to connect, check IP and port.\n' + url_base
+        except requests.HTTPError as error:
+            output = 'HTTP error raised, see error message.\n' + str(error)
+        else:
+            output = response
+        finally:
+            return output
     
     def get_interface_info(self, data_type='json'):
         """
         Returns dictionary containing JSON interface information
         """
         dn = '/data/Cisco-IOS-XE-native:native/interface'
+        # dn = '/data/Cisco-IOS-XE-native:native/interface/fail'
         headers={'Accept':'application/yang-data+' + data_type}
         return self.get_request(headers, dn)
 
@@ -48,8 +58,10 @@ class CiscoRestconf():
 
 def main():
     ip = '10.254.0.1'
+    # ip = '10.254.0.100'
     port = '443'
     csr = CiscoRestconf(ip, port, 'cisco', 'cisco')
+    # csr = CiscoRestconf(ip, port, 'cisco', 'wrong')
     print(csr.get_interface_info())
 
 if __name__ == '__main__':
