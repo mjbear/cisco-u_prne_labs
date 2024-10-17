@@ -25,8 +25,14 @@ class CiscoIOS():
         self.password = password
         self.device_type = device_type
 
-        self.conn = self.connect()
-
+        try:
+            self.conn = self.connect()
+        except netmiko.NetmikoAuthenticationException:
+            self.get_creds()
+            self.conn = self.connect()
+        except netmiko.NetmikoTimeoutException:
+            self.ssh_exception_output()
+            sys.exit()
         self.hostname = self.conn.send_command('sh run | include hostname').split()[-1]
 
     def connect(self):
@@ -127,3 +133,15 @@ class CiscoIOS():
                 'Ensure you are using the correct connection information.'.center(80),
                 '\n'
             )
+
+def main():
+    # good
+    # csr = CiscoIOS('10.254.0.1', username='cisco', password='cisco')
+    # wrong password
+    # csr = CiscoIOS('10.254.0.1', username='cisco', password='wrong_password')
+    # incorrect or offline host
+    csr = CiscoIOS('10.254.0.100', username='cisco', password='cisco')
+    print(csr.get_ip_arp())
+
+if __name__ == '__main__':
+    main()
