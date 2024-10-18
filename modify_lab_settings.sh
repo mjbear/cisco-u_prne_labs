@@ -42,3 +42,9 @@ EOF
 
 # set git editor
 git config --global core.editor vim
+
+# create a git alias for 'switch' if the git version is older than 2.23
+git_ver=$(git --version | awk '{split($3, array, "."); print array[1] array[2]}')
+if [ $git_ver -lt 223 ]; then
+    git config --global alias.switch checkout
+fi
