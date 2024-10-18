@@ -23,7 +23,7 @@ gsettings set org.gnome.gedit.preferences.editor editor-font "$font"
 
 # vscode editor and terminal font size
 echo -e "Setting VS Code editor and terminal font size\n"
-file='~/.config/Code/User/settings.json'
+file="$HOME/.config/Code/User/settings.json"
 array=(
     editor.fontSize
     terminal.integrated.fontSize
