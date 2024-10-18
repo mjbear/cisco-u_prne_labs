@@ -49,7 +49,8 @@ class CiscoIOS():
         """
         Returns list containing interface names from show ip interface brief
         """
-        ip_int_br = self.conn.send_command('sh ip int br')
+        # ip_int_br = self.conn.send_command('sh ip int br')
+        ip_int_br = self.conn.send_command('sh ip int br', use_textfsm=True)
         df = pd.DataFrame(ip_int_br)
         interface_names = df['intf'].to_list()
         return interface_names
