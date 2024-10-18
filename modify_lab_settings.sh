@@ -58,6 +58,10 @@ fi
 # )
 # sed -i.dist -e "/^}/i\\$code_font" $file
 
+# working alternative, but without variables in the sed expression
+# sed -e '/^}/i\\    "editor.fontSize": 20,\
+#     "terminal.integrated.fontSize": 20,' $file
+
 # awk version of inserting (but doesn't check for existing)
 # code_font=$(cat <<EOF
 #     "editor.fontSize": $size,
