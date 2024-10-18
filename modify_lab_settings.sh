@@ -58,6 +58,14 @@ fi
 # )
 # sed -i.dist -e "/^}/i\\$code_font" $file
 
+# awk version of inserting (but doesn't check for existing)
+# code_font=$(cat <<EOF
+#     "editor.fontSize": $size,
+#     "terminal.integrated.fontSize": $size,
+# EOF
+# )
+# awk -v c="$code_font" '/^}/{print c}1' $file
+
 # stop gap, doesn't check for existing font settings
 # sed -i.dist -e '/^}/d' $file
 # cat >> $file <<EOF
