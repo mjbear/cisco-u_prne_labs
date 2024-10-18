@@ -1,0 +1,22 @@
+Python 3.6.9 (default, Nov 14 2022, 18:04:10) 
+[GCC 7.5.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import requests
+>>> uri = 'https://10.254.0.1:443/restconf'
+>>> auth = ('username', 'password')
+>>> headers = {'Accept': 'Application/yang+json'}
+>>> response = requests.get(uri, auth=auth, headers=headers, verify=False)
+>>> print(response.status_code)
+401
+>>> print(response.reason)
+Unauthorized
+>>> print(response.content)
+b'\n<errors xmlns="urn:ietf:params:xml:ns:yang:ietf-restconf">\n  <error>\n    <error-type>protocol</error-type>\n    <error-tag>access-denied</error-tag>\n  </error>\n</errors>\n'
+>>> auth = ('cisco', 'cisco')
+>>> response = requests.get(uri, auth=auth, headers=headers, verify=False)
+>>> print(response.status_code)
+406
+>>> headers = {'Accept': 'application/yang-data+json'}
+>>> response = requests.get(uri, auth=auth, headers=headers, verify=False)
+>>> print(response.status_code)
+200
