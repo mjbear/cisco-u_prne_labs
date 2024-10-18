@@ -21,4 +21,7 @@ def get_data(conn, command):
     return router_output
 
 csr = connect('10.254.0.1', 'cisco', 'cisco')
-print(get_data(csr, 'show run | include hostname'))
+# csr = connect('csr1kv1', 'cisco', 'cisco')
+# print(get_data(csr, 'show run | include hostname'))
+# print(get_data(csr, 'show run | include hotname'))
+print(get_data(csr, 'shw run | include hostname'))
