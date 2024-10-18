@@ -23,21 +23,48 @@ gsettings set org.gnome.gedit.preferences.editor editor-font "$font"
 
 # vscode editor and terminal font size
 echo -e "Setting VS Code editor and terminal font size\n"
+file='~/.config/Code/User/settings.json'
+array=(
+    editor.fontSize
+    terminal.integrated.fontSize
+)
+new_settings=''
+
+# more likely to be mostly idempotent
+for i in ${array[@]}
+do
+    grep -q $i $file
+    if [ $? -eq 0 ]
+    then
+        sed -i -E "/.+\"$i\".+/s/[0-9]+,/$size,/" $file
+    else
+        new_settings="$new_settings\n    \"$i\": $size,"
+    fi
+done
+
+if [ ${#new_settings} -gt 0 ]
+then
+    # must drop leading newline and escape first space so sed honors the
+    #   leading spaces
+    new_settings='\'$(echo "$new_settings" | sed -e 's/^\\n//g')
+    sed -i.dist -e "/^}/i$new_settings" $file
+fi
+
+# not working due to newline in herestring
 # code_font=$(cat <<EOF
+#     "editor.fontSize": $size,
+#     "terminal.integrated.fontSize": $size,
+# EOF
+# )
+# sed -i.dist -e "/^}/i\\$code_font" $file
+
+# stop gap, doesn't check for existing font settings
+# sed -i.dist -e '/^}/d' $file
+# cat >> $file <<EOF
 #     "editor.fontSize": $size,
 #     "terminal.integrated.fontSize": $size,
 # }
 # EOF
-# )
-# sed -i.dist -e "s/^}/$code_font/" ~/.config/Code/User/settings.json
-
-# stop gap
-sed -i.dist -e '/^}/d' ~/.config/Code/User/settings.json
-cat >> ~/.config/Code/User/settings.json <<EOF
-    "editor.fontSize": $size,
-    "terminal.integrated.fontSize": $size,
-}
-EOF
 
 
 # set git editor
