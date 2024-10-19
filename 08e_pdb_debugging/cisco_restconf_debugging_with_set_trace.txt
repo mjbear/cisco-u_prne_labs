@@ -1,0 +1,112 @@
+student@student-vm:~/cisco-u_prne_labs/08e_pdb_debugging$ python cisco_restconf.py 
+Traceback (most recent call last):
+  File "cisco_restconf.py", line 11, in <module>
+    ip = row['ip']
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/pandas/core/series.py", line 882, in __getitem__
+    return self._get_value(key)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/pandas/core/series.py", line 990, in _get_value
+    loc = self.index.get_loc(label)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/pandas/core/indexes/range.py", line 358, in get_loc
+    raise KeyError(key)
+KeyError: 'ip'
+student@student-vm:~/cisco-u_prne_labs/08e_pdb_debugging$ python cisco_restconf.py 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(12)<module>()
+-> ip = row['ip']
+(Pdb) p row
+0    10.254.0.1
+1     10.2540.2
+2    10.254.0.3
+Name: ip, dtype: object
+(Pdb) p index
+'ip'
+(Pdb) q
+Traceback (most recent call last):
+  File "cisco_restconf.py", line 12, in <module>
+    ip = row['ip']
+  File "cisco_restconf.py", line 12, in <module>
+    ip = row['ip']
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/bdb.py", line 51, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/bdb.py", line 70, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+student@student-vm:~/cisco-u_prne_labs/08e_pdb_debugging$ python cisco_restconf.py 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(13)<module>()
+-> ip = row['ip']
+(Pdb) p row
+ip          10.254.0.1
+username         cisco
+password         cisco
+Name: 0, dtype: object
+(Pdb) c
+Traceback (most recent call last):
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/urllib3/connectionpool.py", line 710, in urlopen
+    chunked=chunked,
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/urllib3/connection.py", line 424, in connect
+    tls_in_tls=tls_in_tls,
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/urllib3/util/ssl_.py", line 453, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/urllib3/util/ssl_.py", line 495, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/ssl.py", line 407, in wrap_socket
+    _context=self, _session=session)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/ssl.py", line 817, in __init__
+    self.do_handshake()
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/ssl.py", line 1077, in do_handshake
+    self._sslobj.do_handshake()
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/ssl.py", line 689, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:852)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/requests/adapters.py", line 450, in send
+    timeout=timeout
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='10.254.0.1', port=443): Max retries exceeded with url: /restconf (Caused by SSLError(SSLError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:852)'),))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "cisco_restconf.py", line 13, in <module>
+    ip = row['ip']
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/requests/api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/requests/adapters.py", line 517, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='10.254.0.1', port=443): Max retries exceeded with url: /restconf (Caused by SSLError(SSLError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:852)'),))
+student@student-vm:~/cisco-u_prne_labs/08e_pdb_debugging$ python cisco_restconf.py 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(13)<module>()
+-> ip = row['ip']
+(Pdb) p row
+ip          10.254.0.1
+username         cisco
+password         cisco
+Name: 0, dtype: object
+(Pdb) c
+Traceback (most recent call last):
+  File "cisco_restconf.py", line 13, in <module>
+    ip = row['ip']
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/site-packages/requests/models.py", line 900, in json
+    self.content.decode(encoding), **kwargs
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/json/__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home/student/.pyenv/versions/3.6.9/lib/python3.6/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
