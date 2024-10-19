@@ -9,7 +9,7 @@ conn_info = pandas.read_csv('conn_info.csv')
 
 # for index, row in conn_info.iteritems():
 for index, row in conn_info.iterrows():
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     ip = row['ip']
     username = row['username']
     password = row['password']
@@ -18,5 +18,6 @@ for index, row in conn_info.iterrows():
 
     # response = requests.get(uri, auth=auth)
     response = requests.get(uri, auth=auth, verify=False)
-    print(response.json())
+    # print(response.json())
+    print(response.content)
     print(DASH)

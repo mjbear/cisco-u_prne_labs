@@ -1,0 +1,142 @@
+student@student-vm:~/cisco-u_prne_labs/08e_pdb_debugging$ python -m pdb cisco_restconf.py 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(1)<module>()
+-> import json
+(Pdb) n
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(2)<module>()
+-> import os
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(3)<module>()
+-> import requests
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(4)<module>()
+-> import pandas
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(7)<module>()
+-> DASH = '-' * os.get_terminal_size().columns
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(8)<module>()
+-> conn_info = pandas.read_csv('conn_info.csv')
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(11)<module>()
+-> for index, row in conn_info.iterrows():
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(13)<module>()
+-> ip = row['ip']
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(14)<module>()
+-> username = row['username']
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(15)<module>()
+-> password = row['password']
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(16)<module>()
+-> uri = f'https://{ip}:443/restconf'
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(17)<module>()
+-> auth = (username, password)
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(20)<module>()
+-> response = requests.get(uri, auth=auth, verify=False)
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(21)<module>()
+-> print(response.json())
+(Pdb) 
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(21)<module>()
+-> print(response.json())
+(Pdb) p response
+<Response [200]>
+(Pdb) p response.content
+b'<restconf xmlns="urn:ietf:params:xml:ns:yang:ietf-restconf">\n  <data/>\n  <operations/>\n  <yang-library-version>2019-01-04</yang-library-version>\n</restconf>\n'
+(Pdb) 
+student@student-vm:~/cisco-u_prne_labs/08e_pdb_debugging$ 
+student@student-vm:~/cisco-u_prne_labs/08e_pdb_debugging$ 
+student@student-vm:~/cisco-u_prne_labs/08e_pdb_debugging$ python -m pdb cisco_restconf.py 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(1)<module>()
+-> import json
+(Pdb) 
+(Pdb) 
+(Pdb) n
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(2)<module>()
+-> import os
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(3)<module>()
+-> import requests
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(4)<module>()
+-> import pandas
+(Pdb) 
+
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(7)<module>()
+-> DASH = '-' * os.get_terminal_size().columns
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(8)<module>()
+-> conn_info = pandas.read_csv('conn_info.csv')
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(11)<module>()
+-> for index, row in conn_info.iterrows():
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(13)<module>()
+-> ip = row['ip']
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(14)<module>()
+-> username = row['username']
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(15)<module>()
+-> password = row['password']
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(16)<module>()
+-> uri = f'https://{ip}:443/restconf'
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(17)<module>()
+-> auth = (username, password)
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(20)<module>()
+-> response = requests.get(uri, auth=auth, verify=False)
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(22)<module>()
+-> print(response.content)
+(Pdb) 
+b'<restconf xmlns="urn:ietf:params:xml:ns:yang:ietf-restconf">\n  <data/>\n  <operations/>\n  <yang-library-version>2019-01-04</yang-library-version>\n</restconf>\n'
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(23)<module>()
+-> print(DASH)
+(Pdb) 
+--------------------------------------------------------------------------
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(11)<module>()
+-> for index, row in conn_info.iterrows():
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(13)<module>()
+-> ip = row['ip']
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(14)<module>()
+-> username = row['username']
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(15)<module>()
+-> password = row['password']
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(16)<module>()
+-> uri = f'https://{ip}:443/restconf'
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(17)<module>()
+-> auth = (username, password)
+(Pdb) 
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(20)<module>()
+-> response = requests.get(uri, auth=auth, verify=False)
+(Pdb) 
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='10.2540.2', port=443): Max retries exceeded with url: /restconf (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f3eef7a2828>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+> /home/student/cisco-u_prne_labs/08e_pdb_debugging/cisco_restconf.py(20)<module>()
+-> response = requests.get(uri, auth=auth, verify=False)
+(Pdb) p conn_info
+           ip username password
+0  10.254.0.1    cisco    cisco
+1   10.2540.2    cisco    cisco
+2  10.254.0.3    cisco    csico
+(Pdb) q
+student@student-vm:~/cisco-u_prne_labs/08e_pdb_debugging$ student@student-vm:~/cisco-u_prne_labs/08e_pdb_debugging$ 
+student@student-vm:~/cisco-u_prne_labs/08e_pdb_debugging$ python cisco_restconf.py 
+b'<restconf xmlns="urn:ietf:params:xml:ns:yang:ietf-restconf">\n  <data/>\n  <operations/>\n  <yang-library-version>2019-01-04</yang-library-version>\n</restconf>\n'
+--------------------------------------------------------------------------
+b'<restconf xmlns="urn:ietf:params:xml:ns:yang:ietf-restconf">\n  <data/>\n  <operations/>\n  <yang-library-version>2019-01-04</yang-library-version>\n</restconf>\n'
+--------------------------------------------------------------------------
+b'<restconf xmlns="urn:ietf:params:xml:ns:yang:ietf-restconf">\n  <data/>\n  <operations/>\n  <yang-library-version>2019-01-04</yang-library-version>\n</restconf>\n'
+--------------------------------------------------------------------------
