@@ -21,7 +21,7 @@ And more detail on the modes
 
 * requires opening **and** closing the file
 
-```
+```python
 fh = open(filename, mode)
 
 text = fh.read()
@@ -34,7 +34,7 @@ fh.close()
 
 * handles opening and closing the file
 
-```
+```python
 with open(filename, mode):
     text = fh.read()
     print(text)
@@ -49,7 +49,7 @@ with open(filename, mode):
 * `readline()` - returns a line at a time
 * `readlines()` - returns a list of all the lines
 
-```
+```python
 # read four bytes
 fh.read(4)
 ```
@@ -57,7 +57,8 @@ fh.read(4)
 #### Read from CSV
 
 ##### As a List
-```
+
+```python
 import csv
 
 with open('device.csv', 'r') as fh:
@@ -69,7 +70,8 @@ with open('device.csv', 'r') as fh:
 ```
 
 ##### As a Dictionary
-```
+
+```python
 import csv
 
 with open('device.csv', 'r') as fh:
@@ -88,7 +90,7 @@ with open('device.csv', 'r') as fh:
 
 ##### Use write()
 
-```
+```python
 msg = 'Hello World from Bob'
 
 with open('hw.txt', 'w') as fh:
@@ -97,7 +99,7 @@ with open('hw.txt', 'w') as fh:
 
 ##### Use print()
 
-```
+```python
 msg = 'Hello World from Bob'
 
 with open('hw.txt', 'w') as fh:
@@ -106,7 +108,7 @@ with open('hw.txt', 'w') as fh:
 
 ##### Writing Data to a CSV File
 
-```
+```python
 import csv
 
 data = [['Hostname', 'Vendor', 'Model', 'Location'],
@@ -129,7 +131,7 @@ with open('new_devices.csv', 'r') as fh:
 * os.walk()
 
 > [!NOTE]
-> ```
+> ```python
 > for _ in os.walk('/tmp'):
 >     print(_)
 > ```
@@ -142,7 +144,7 @@ with open('new_devices.csv', 'r') as fh:
     * two-dimensional tabular data structure
     * has rows and columns
 
-```
+```python
 import pandas
 
 with open('router_info.csv') as fh:
@@ -173,7 +175,7 @@ https://requests.readthedocs.io/en/latest/
 
 #### Read XML
 
-```
+```python
 from bs4 import BeautifulSoup
 
 xml_data = '''
@@ -209,12 +211,12 @@ https://www.w3schools.com/xml/default.asp
 
 ## Reading and Writing a JSON File
 
-* json.load()
-* json.loads()
-* json.dump()
-* json.dumps()
+* `json.load()`
+* `json.loads()`
+* `json.dump()`
+* `json.dumps()`
 
-```
+```python
 import json
 
 # write to file
@@ -229,7 +231,7 @@ https://docs.python.org/3/library/json.html#json-to-py-table
 
 ## pprint
 
-```
+```python
 from pprint import pprint
 
 pprint(obj, indent=4, width=80, depth=None)
