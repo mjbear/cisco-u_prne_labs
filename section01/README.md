@@ -123,8 +123,8 @@ REPL
 * Loop
 
 Python shell history at:
-* (Windows) %USERPROFILE/.python_history
-* (GNU/Linux) ~/.python_history
+* (Windows) `%USERPROFILE/.python_history`
+* (GNU/Linux) `~/.python_history`
 
 ### PEPs
 
@@ -162,5 +162,5 @@ High level points
 * [pycodestyle](https://pypi.org/project/pycodestyle/)
 
 ### Getting Help
-* dir()
-* help()
+* `dir()`
+* `help()`
