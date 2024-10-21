@@ -6,7 +6,8 @@
 * code in the (`if` statement) control structure will run if the expression evaluates to `True`
 
 ### if
-```
+
+```python
 x = True
 if x:
     print('x is True')
@@ -21,7 +22,8 @@ if x:
 ```
 
 ### if, elif, else
-```
+
+```python
 x = False
 y = True
 
@@ -107,10 +109,9 @@ not in
 
 `for <var> in <iterable>:`
 
-```
+```python
 for i in 'string':
     print(i)
-
 
 for i in range(10):
     print(i)
@@ -123,7 +124,7 @@ for i in range(10):
 
 `while <expression>:`
 
-```
+```python
 i = 4
 while i > 0:
     print(f'The value of i is {i}')
@@ -132,7 +133,7 @@ while i > 0:
 
 ### Loops with List
 
-```
+```python
 devices = ['router1', 'router2', 'router3', 'switch1']
 for device in devices:
     print(device)
@@ -146,7 +147,7 @@ values()
 items() - key-value pairs
 ```
 
-```
+```python
 device = {'device': 'router', 'model': '3800', 'os': 'IOS-XE'}
 
 for key in device.keys():
@@ -163,7 +164,7 @@ for item in device.items():
 
 `range(start, stop, step)`
 
-```
+```python
 devices = ['router1', 'router2', 'router3', 'switch1']
 
 for i in range(2, len(device)):
@@ -172,7 +173,7 @@ for i in range(2, len(device)):
 
 ### Loops with Conditionals
 
-```
+```python
 devices = ['router1', 'router2', 'router3', 'switch1']
 
 for i in range(len(devices)):
