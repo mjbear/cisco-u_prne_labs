@@ -40,24 +40,25 @@ float
 3.14
 ```
 
-Maximum floating point value before an exponential becomes infinity (`inf`)
-```
->>> 2e308
-inf
->>> 2e307
->>> 2e+307
->>>
->>> import sys
->>> sys.float_info
->>>
->>> 1.7e309
-inf
->>> 1.7e308
-1.7e+307
-```
-
-* https://note.nkmk.me/en/python-sys-float-info-max-min/
-* https://juliensobczak.com/inspect/2019/03/10/floating-point-numbers-demystified/
+> [!TIP]
+> Maximum floating point value before an exponential becomes infinity (`inf`)
+> ```
+> >>> 2e308
+> inf
+> >>> 2e307
+> >>> 2e+307
+> >>>
+> >>> import sys
+> >>> sys.float_info
+> >>>
+> >>> 1.7e309
+> inf
+> >>> 1.7e308
+> 1.7e+307
+> ```
+> 
+> * https://note.nkmk.me/en/python-sys-float-info-max-min/
+> * https://juliensobczak.com/inspect/2019/03/10/floating-point-numbers-demystified/
 
 ### Boolean
 
@@ -168,11 +169,11 @@ len()
 
 ### Tuple
 
+* start and end with parentheses `()`
 * similar to lists
    * both are a collection of ordered objects
    * both allow duplicate objects
 * tuples are immutable though (unable to be changed once created)
-* use parentheses
 * indexes work like those of lists (also start at zero, etc)
 
 ```
@@ -190,6 +191,7 @@ index()
 
 ### Set
 
+* start and end with curly braces `{}`
 * store multiple objects
 * unordered and unindexed
 * no duplicate values
@@ -209,6 +211,8 @@ and [more set methods](https://docs.python.org/3/library/stdtypes.html#set-types
 
 ### Dictionary
 
+* start and end with curly braces `{}`
+    * (sets also use curly braces, but they are different types)
 * unordered list of key-value pairs
 * mutable
     * grow or shrink as needed
@@ -271,15 +275,15 @@ swapcase()
 '1.2.3'
 ```
 
-* [:3]
+* `[:3]`
     * beginning to index three
-* [-3:]
+* `[-3:]`
     * third to last through to the end
-* [0:7:2]
+* `[0:7:2]`
     * 0 to index 7, every second index
 
 #### String Concatenation
-* plus sign +
+* plus sign `+`
 * cast other variables to string to avoid TypeErrors
 
 #### Whitespace Stripping
