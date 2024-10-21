@@ -89,6 +89,13 @@ float
 * set
 * dictionary
 
+> [!TIP]
+> Trailing commas within lists, tuples, sets, and dictionaries is a best practice.
+>
+> 1. makes it easier to work with
+> 1. avoids situations where the comma is forgotten when adding a new item (causing a SyntaxError)
+> 1. when the comma is already present, `git diff` for version control doesn't show that line as changed (since it didn't if the comma was there)
+
 ### Variables
 * Assignment
     * uses a single equals sign
