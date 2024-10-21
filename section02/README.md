@@ -8,7 +8,7 @@
 * can embed quotes (and escape them)
 * use triple single or double quotes to span multiple lines
 
-```
+```python
 >>> type('Hello World')
 <class 'str'>
 >>> str('3.14')
@@ -19,7 +19,7 @@
 
 * whole number with no decimal places
 
-```
+```python
 >>> int(3.14)
 3
 >>> int('3.14')
@@ -32,7 +32,7 @@
 * character e (exponential) followed by a positive or negative number is also a
 float
 
-```
+```python
 >>> float(3)
 3.0
 >>> float('3.14')
@@ -41,7 +41,7 @@ float
 
 > [!TIP]
 > Maximum floating point value before an exponential becomes infinity (`inf`)
-> ```
+> ```python
 > >>> 2e308
 > inf
 > >>> 2e307
@@ -74,7 +74,7 @@ float
 > [!TIP]
 > To make large numbers more readable, use underscores where commas would often be
 
-```
+```python
 >>> type(25000000)
 <class 'int'>
 >>>
@@ -127,7 +127,7 @@ value and ref count.
 
 Use `id()` to identify the memory location used to store an object.
 
-```
+```python
 >>> x = 100
 >>> y = 200
 >>>
@@ -153,7 +153,7 @@ Use `id()` to identify the memory location used to store an object.
     * last = -1
     * next to last = -2
 
-```
+```python
 >>> a = [1, 2, 3, 4]
 >>> a[1]
 2
@@ -182,7 +182,7 @@ len()
 * tuples are immutable though (unable to be changed once created)
 * indexes work like those of lists (also start at zero, etc)
 
-```
+```python
 >>> a = (1, 2, 3, 4)
 >>> a[1]
 2
@@ -202,7 +202,7 @@ index()
 * unordered and unindexed
 * no duplicate values
 
-```
+```python
 >>> a = {1, 2, 3, 4}
 ```
 
@@ -224,7 +224,7 @@ and [more set methods](https://docs.python.org/3/library/stdtypes.html#set-types
     * grow or shrink as needed
     * can be nested
 
-```
+```python
 >>> a = {'a': 1, 'b': 'two'}
 >>> a['a']
 1
@@ -260,7 +260,7 @@ swapcase()
 
 `str.split(separator, maxsplit)`
 
-```
+```python
 >>> 'Hello World'.split()
 ['Hello', 'World']
 >>>
@@ -278,7 +278,7 @@ swapcase()
 * strings are indexed
 * `str[beginning index, ending index, step]`
 
-```
+```python
 >>> ip = '10.1.2.3'
 >>> ip[3:7]
 '1.2.3'
@@ -312,7 +312,8 @@ str.rstrip()
 * (additionally) manual string formatting
 
 ##### format()
-```
+
+```python
 >>> 'Hello World from {0}'.format('Bob')
 'Hello World from Bob'
 >>> 'Hello World from {name}'.format(name='Bob')
@@ -320,7 +321,8 @@ str.rstrip()
 ```
 
 ##### format strings / f-strings
-```
+
+```python
 >>> name='Bob'
 >>> f'Hello World from {name}'
 'Hello World from Bob'
@@ -328,7 +330,7 @@ str.rstrip()
 
 ##### Templates
 
-```
+```python
 >>> from string import Template
 >>> x = Template('Hello World from $name')
 >>> x.substitute(name='Bob')
@@ -339,7 +341,7 @@ str.rstrip()
 
 https://docs.python.org/3/tutorial/inputoutput.html#old-string-formatting
 
-```
+```python
 >>> 'Hello World from %s' % ('Bob')
 'Hello World from Bob'
 >>>
@@ -352,7 +354,7 @@ https://docs.python.org/3/tutorial/inputoutput.html#old-string-formatting
 
 https://docs.python.org/3/tutorial/inputoutput.html#manual-string-formatting
 
-```
+```python
 >>> print('Hello', 'World', 'Bob')
 Hello World Bob
 >>>
@@ -379,7 +381,7 @@ Hello, World, Bob
 * `find()`
 * `startswith()`
 
-```
+```python
 str.count(sub, start, stop)
 str.find(sub, start, stop)
 str.startswith(prefix, start, stop)
