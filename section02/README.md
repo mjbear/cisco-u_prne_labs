@@ -31,7 +31,6 @@
 * number with a decimal point
 * character e (exponential) followed by a positive or negative number is also a
 float
-    * 
 
 ```
 >>> float(3)
@@ -65,8 +64,8 @@ float
 * True or False
 * titlecase matters (first letter capitalized)
 * `bool()`
-    * if numeric zero = False
-    * non-zero = True
+    * if numeric zero = `False`
+    * non-zero = `True`
 
 ## type() Function
 
@@ -93,13 +92,13 @@ float
 ### Variables
 * Assignment
     * uses a single equals sign
-    * for contrast, equality uses double equals ==
+    * for contrast, equality uses double equals `==`
 * Naming
     * lowercase names recommended
     * case-sensitive
     * single letter or one or more words
     * cannot start with a number
-    * separate words with underscores _
+    * separate words with underscores `_`
     * self-explanatory, but not too long
     * cannot be **[Python keywords](https://docs.python.org/3/reference/lexical_analysis.html#keywords)**
 * Types (scopes)
@@ -260,6 +259,9 @@ swapcase()
 >>>
 >>> '1111:2222:3333'.split(':')
 ['1111', '2222', '3333']
+>>>
+>>> '1111:2222:3333'.split(':', 1)
+['1111', '2222:3333']
 ```
 
 #### String Modification
@@ -267,7 +269,7 @@ swapcase()
 ##### Slicing
 
 * strings are indexed
-* str[beginning index, ending index, step]
+* `str[beginning index, ending index, step]`
 
 ```
 >>> ip = '10.1.2.3'
@@ -284,7 +286,7 @@ swapcase()
 
 #### String Concatenation
 * plus sign `+`
-* cast other variables to string to avoid TypeErrors
+* cast other variables to string to avoid `TypeErrors`
 
 #### Whitespace Stripping
 
@@ -299,14 +301,59 @@ str.rstrip()
 * `format()`
 * format strings / f-strings
 * Templates
+* (additionally) old string formatting
+* (additionally) manual string formatting
+
+##### format()
+```
+>>> 'Hello World from {0}'.format('Bob')
+'Hello World from Bob'
+>>> 'Hello World from {name}'.format(name='Bob')
+'Hello World from Bob'
+```
+
+##### format strings / f-strings
+```
+>>> name='Bob'
+>>> f'Hello World from {name}'
+'Hello World from Bob'
+```
 
 ##### Templates
 
 ```
 >>> from string import Template
->>> x = Tempalate('Hello World, $name')
+>>> x = Template('Hello World from $name')
 >>> x.substitute(name='Bob')
 'Hello World, Bob'
+```
+
+##### Old String Formatting
+
+https://docs.python.org/3/tutorial/inputoutput.html#old-string-formatting
+
+```
+>>> 'Hello World from %s' % ('Bob')
+'Hello World from Bob'
+>>>
+>>> name='Bob'
+>>> 'Hello World from %s' % (name)
+'Hello World from Bob'
+```
+
+##### Manual String Formatting
+
+https://docs.python.org/3/tutorial/inputoutput.html#manual-string-formatting
+
+```
+>>> print('Hello', 'World', 'Bob')
+Hello World Bob
+>>>
+>>> print('Hello', 'World', 'Bob', end=' ')
+Hello World Bob >>>
+>>>
+>>> print('Hello', 'World', 'Bob', sep=', ')
+Hello, World, Bob
 ```
 
 #### Escape Characters
