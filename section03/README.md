@@ -1,4 +1,4 @@
-# Section 3 - Conditionals and Operators
+# Section 3 - Conditionals, Operators, and Loops
 
 ## Conditionals
 
@@ -96,3 +96,103 @@ is not
 in
 not in
 ```
+
+## Loops
+
+* execute multiple times
+
+### For Loops
+
+* can iterate over iterable objects (iterables) via a for loop
+
+`for <var> in <iterable>:`
+
+```
+for i in 'string':
+    print(i)
+
+
+for i in range(10):
+    print(i)
+```
+
+### While Loops
+
+* used to iterate as long as test expression is True
+* used when the number of iterations/executions is _unknown_
+
+`while <expression>:`
+
+```
+i = 4
+while i > 0:
+    print(f'The value of i is {i}')
+    i -= 1
+```
+
+### Loops with List
+
+```
+devices = ['router1', 'router2', 'router3', 'switch1']
+for device in devices:
+    print(device)
+```
+
+### Loops with Dict
+
+```
+keys()
+values()
+items() - key-value pairs
+```
+
+```
+device = {'device': 'router', 'model': '3800', 'os': 'IOS-XE'}
+
+for key in device.keys():
+    print(key)
+
+for value in device.values():
+    print(value)
+
+for item in device.items():
+    print(item)
+```
+
+### Loops with Range
+
+`range(start, stop, step)`
+
+```
+devices = ['router1', 'router2', 'router3', 'switch1']
+
+for i in range(2, len(device)):
+    print(device[i])
+```
+
+### Loops with Conditionals
+
+```
+devices = ['router1', 'router2', 'router3', 'switch1']
+
+for i in range(len(devices)):
+    if devices[i] == 'router3':
+        print('This is router3 inside the if statement')
+    print('This is outside the if statement')
+```
+
+#### Break
+
+* break completely out of a loop
+* terminates the loop
+
+https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements
+
+#### Continue
+
+* skip code for the current iteration
+* loop does not terminate, but continues with the next iteration
+
+#### Else Clauses on Loops
+
+https://docs.python.org/3/tutorial/controlflow.html#else-clauses-on-loops
