@@ -62,7 +62,7 @@ changes should be transparent
 1. **Layered System**: always process regardless of the number of layers (device) between
 1. **Code on Demand**: (optional) transmit code over API
 
-![REST constraints](section01/rest_constraints.png)
+![REST constraints](rest_constraints.png)
 
 #### HTTP Request/Response
 
@@ -73,7 +73,7 @@ changes should be transparent
 * **DELETE**: remove resource;  not idempotent; successful = HTTP 200 status
 * **PUT**: replace resource; not partial update; idempotent; successful = HTTP 200 status
 
-![REST HTTP methods](section01/rest_http_methods.png)
+![REST HTTP methods](rest_http_methods.png)
 
 ## Continued Importance of the CLI
 
@@ -156,7 +156,7 @@ High level points
     uses tabs
     * don't try to mix spaces and tabs
 
-![Python PEP8 diagram](section01/python_pep8.png)
+![Python PEP8 diagram](python_pep8.png)
 
 #### Checking Conformity
 * [pycodestyle](https://pypi.org/project/pycodestyle/)
