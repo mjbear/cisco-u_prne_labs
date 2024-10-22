@@ -13,7 +13,7 @@
 | Name              | Description |
 | :---------------- | :---------- |
 | AttributeError    | attribute reference assignment fails
-| IOError           | system-related I/O error
+| IOError           | system-related I/O error (file not found, disk full)
 | ImportError       | import statement fails to load a module
 | IndexError        | sequence subscript is out of range
 | KeyError          | mapping (dictionary) key is not found
@@ -27,9 +27,16 @@
 
 ### Error Types
 
-* syntax errors
-* runtime errors
-* semantic errors
+| Name            | Explanation |
+| :-------------- | :---------- |
+| syntax errors   | common; often easy to fix; incorrect syntax
+| runtime errors  | syntactically correct, but fails during execution (ex: divide by zero)
+| semantic errors | does not produce the intended result; often no error messages; difficult to fix
+
+* https://greenteapress.com/thinkpython/html/thinkpython021.html
+* https://runestone.academy/ns/books/published/fopp/Debugging/Syntaxerrors.html
+* https://runestone.academy/ns/books/published/fopp/Debugging/RuntimeErrors.html
+* https://runestone.academy/ns/books/published/fopp/Debugging/SemanticErrors.html
 
 ## Managing Exceptions
 
@@ -158,6 +165,6 @@ https://code.visualstudio.com/docs/python/debugging
 * Python REPL
     * for small blocks of code
 
-## Python pdb
+### Python pdb
 
 [Debugging with Python pdb](section08/08e_pdb_debugging/README.md) in exercise 08e
