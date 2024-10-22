@@ -60,6 +60,8 @@ Then finally run the code. `python <name of script>`
 
 `(Pdb) help pdb`
 
+`(Pdb) help s`
+
 Another example, `(Pdb) help break`
 
 ### Common pdb Command Reference
