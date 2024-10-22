@@ -76,7 +76,7 @@ Another example, `(Pdb) help break`
 | l       | List Source
 | ll      | Long List
 | w       | Print Stack
-| q       | Quit (otherwise use `Ctrl+d` or `exit()` to quit pdb)
+| q       | Quit (otherwise use `quit` [longhand] or `Ctrl+d` or `exit()` to quit pdb)
 | u       | Up (move up in the stack trace)
 | d       | Down (move down in the stack trace)
 
