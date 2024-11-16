@@ -4,7 +4,7 @@
 
 Manual human-centric processes are slow and do not scale to large networks.
 
-SNMP was introduced in 1988 to address the growing needs. Although SNMP can be used to configure and monitor, but due to shortcomings SNMP is rarely used for configuring devices.
+SNMP was introduced in 1988 to address the growing needs. Although SNMP can be used to configure and monitor, due to shortcomings SNMP is rarely used for configuring devices.
 
 ## Automation vs Orchestration
 
